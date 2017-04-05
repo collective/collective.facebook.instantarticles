@@ -14,7 +14,7 @@
     name="facebook.instantarticles.viewlet"
     manager="plone.app.layout.viewlets.interfaces.IHtmlHeadLinks"
     class=".viewlets.FacebookInstantArticlesViewlet"
-    template="instant_article_viewlet.pt"
+    template="templates/instant_article_viewlet.pt"
     layer="collective.facebook.instantarticles.interfaces.IFacebookInstantarticlesLayer"
     permission="zope.Public"
       />
@@ -26,4 +26,13 @@
       permission="collective.facebook.instantmessages.permissions.ManageSettings"
       layer="collective.facebook.instantarticles.interfaces.IFacebookInstantarticlesLayer"
       />
+
+  <browser:page
+    name="fb.rss"
+    class=".rss_view.View"
+    permission="zope2.View"
+    for="plone.app.collection.interfaces.ICollection"
+    layer="collective.facebook.instantarticles.interfaces.IFacebookInstantarticlesLayer"
+    template="templates/rss_view.pt"
+    />
 </configure>

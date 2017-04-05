@@ -19,31 +19,7 @@
       <pubDate tal:content="item/effective">2014-12-11T04:44:16Z</pubDate>
       <author tal:content="item/Creator">Mr. Author</author>
       <description tal:content="item/Description">This is my first Instant Article. How awesome is this?</description>
-      <content:encoded>
-
-        <!doctype html>
-        <html lang="en" prefix="op: http://media.facebook.com/op#">
-          <head>
-            <meta charset="utf-8">
-            <!-- <link rel="canonical" href="http://example.com/article.html"> -->
-            <link rel="alternate" type="application/rss+xml" href="http://example.com/feed" />
-            <meta property="op:markup_version" content="v1.0">
-          </head>
-          <body>
-            <article>
-              <header>
-                <!— Article header goes here -->
-              </header>
-
-              <!— Article body goes here -->
-
-              <footer>
-                <!— Article footer goes here -->
-              </footer>
-            </article>
-          </body>
-        </html>
-
+      <content:encoded tal:content="structure python:view.get_item_html(item)">
       </content:encoded>
     </item>
     </tal:items>

@@ -19,5 +19,5 @@ class View(BrowserView):
         return api.portal.get_current_language()
 
     def get_item_html(self, item):
-        response = subrequest(item.getURL() + '?ajax_load=1')
-        return response.getBody()
+        response = subrequest(item.getURL())
+        return '<![CDATA[{}]]>'.format(response.getBody())

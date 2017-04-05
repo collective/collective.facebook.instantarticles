@@ -1,0 +1,4 @@
+<meta tal:define="code view/code"
+      tal:condition="code"
+      property="fb:pages"
+      tal:attributes="content code" />

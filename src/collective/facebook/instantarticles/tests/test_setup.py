@@ -22,11 +22,11 @@ class TestSetup(unittest.TestCase):
             'collective.facebook.instantarticles'))
 
     def test_browserlayer(self):
-        """Test that ICollectiveFacebookInstantarticlesLayer is registered."""
+        """Test that IFacebookInstantarticlesLayer is registered."""
         from collective.facebook.instantarticles.interfaces import (
-            ICollectiveFacebookInstantarticlesLayer)
+            IFacebookInstantarticlesLayer)
         from plone.browserlayer import utils
-        self.assertIn(ICollectiveFacebookInstantarticlesLayer, utils.registered_layers())
+        self.assertIn(IFacebookInstantarticlesLayer, utils.registered_layers())
 
 
 class TestUninstall(unittest.TestCase):
@@ -44,8 +44,8 @@ class TestUninstall(unittest.TestCase):
             'collective.facebook.instantarticles'))
 
     def test_browserlayer_removed(self):
-        """Test that ICollectiveFacebookInstantarticlesLayer is removed."""
+        """Test that IFacebookInstantarticlesLayer is removed."""
         from collective.facebook.instantarticles.interfaces import \
-            ICollectiveFacebookInstantarticlesLayer
+            IFacebookInstantarticlesLayer
         from plone.browserlayer import utils
-        self.assertNotIn(ICollectiveFacebookInstantarticlesLayer, utils.registered_layers())
+        self.assertNotIn(IFacebookInstantarticlesLayer, utils.registered_layers())

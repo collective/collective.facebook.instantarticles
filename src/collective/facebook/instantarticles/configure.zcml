@@ -8,12 +8,16 @@
 
   <includeDependencies package="." />
 
-  <include package=".browser" />
+  <permission
+     id="collective.facebook.instantmessages.permissions.ManageSettings"
+     title="collective.facebook.instantmessages: Manage Settings"
+     />
 
+  <include package=".browser" />
 
   <genericsetup:registerProfile
       name="default"
-      title="collective.facebook.instantarticles"
+      title="Facebook Instant Articles support"
       directory="profiles/default"
       description="Installs the collective.facebook.instantarticles add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
@@ -22,7 +26,7 @@
 
   <genericsetup:registerProfile
       name="uninstall"
-      title="collective.facebook.instantarticles (uninstall)"
+      title="Facebook Instant Articles support (uninstall)"
       directory="profiles/uninstall"
       description="Uninstalls the collective.facebook.instantarticles add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"

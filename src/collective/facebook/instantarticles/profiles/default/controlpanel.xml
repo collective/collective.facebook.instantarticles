@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel"
+        xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        i18n:domain="collective.facebook.instantarticles">
+
+    <configlet
+        title="Facebook instant articles settings"
+        action_id="instant-articles-controlpanel"
+        appId="collective.facebook.instantarticles"
+        category="Products"
+        condition_expr=""
+        icon_expr="string:${portal_url}/++resource++collective.facebook.instantarticles/fb_zap.png"
+        url_expr="string:${portal_url}/@@instant-articles-controlpanel"
+        visible="True"
+        i18n:attributes="title">
+            <permission>collective.facebook.instantmessages: Manage Settings</permission>
+    </configlet>
+
+</object>

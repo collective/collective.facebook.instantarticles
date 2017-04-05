@@ -4,18 +4,26 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.facebook.instantarticles">
 
-  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
-  <include package="z3c.jbot" file="meta.zcml" />
-  <browser:jbot
-      directory="overrides"
-      layer="collective.facebook.instantarticles.interfaces.ICollectiveFacebookInstantarticlesLayer"
-      />
-
   <!-- Publish static files -->
-  <plone:static
+  <browser:resourceDirectory
       name="collective.facebook.instantarticles"
-      type="plone"
       directory="static"
       />
 
+  <browser:viewlet
+    name="facebook.instantarticles.viewlet"
+    manager="plone.app.layout.viewlets.interfaces.IHtmlHeadLinks"
+    class=".viewlets.FacebookInstantArticlesViewlet"
+    template="instant_article_viewlet.pt"
+    layer="collective.facebook.instantarticles.interfaces.IFacebookInstantarticlesLayer"
+    permission="zope.Public"
+      />
+
+  <browser:page
+      name="instant-articles-controlpanel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.InstantArticlesSettingsControlPanel"
+      permission="collective.facebook.instantmessages.permissions.ManageSettings"
+      layer="collective.facebook.instantarticles.interfaces.IFacebookInstantarticlesLayer"
+      />
 </configure>

@@ -2,6 +2,6 @@
 <layers>
   <layer
       name="collective.facebook.instantarticles"
-      interface="collective.facebook.instantarticles.interfaces.ICollectiveFacebookInstantarticlesLayer"
+      interface="collective.facebook.instantarticles.interfaces.IFacebookInstantarticlesLayer"
       />
 </layers>

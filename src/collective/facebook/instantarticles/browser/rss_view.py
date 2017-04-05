@@ -20,4 +20,5 @@ class View(BrowserView):
 
     def get_item_html(self, item):
         response = subrequest(item.getURL())
-        return '<![CDATA[{}]]>'.format(response.getBody())
+        res = '<![CDATA[{}]]>'.format(response.getBody())
+        return res.replace('src="++resource++', 'src="{}/++resource++'.format(self.context.portal_url()))

@@ -31,7 +31,7 @@
     name="fb.rss"
     class=".rss_view.View"
     permission="zope2.View"
-    for="plone.app.collection.interfaces.ICollection"
+    for="Products.CMFPlone.interfaces.syndication.ISyndicatable"
     layer="collective.facebook.instantarticles.interfaces.IFacebookInstantarticlesLayer"
     template="templates/rss_view.pt"
     />

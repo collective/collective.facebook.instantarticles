@@ -14,4 +14,6 @@ class FacebookInstantArticlesViewlet(ViewletBase):
         codes = api.portal.get_registry_record(
             'fb_page_codes',
             interface=IInstantArticlesSettings)
+        if not codes:
+            return ''
         return (', ').join(codes)

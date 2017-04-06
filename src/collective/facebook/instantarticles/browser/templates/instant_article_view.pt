@@ -38,7 +38,7 @@
             tal:attributes="datetime python:view.getFormattedDate(context.modified())"
             tal:content="python:toLocalizedTime(context.modified())">February 4th 2016, 8:00 AM</time>
     </header>
-    <tal:text define="text context/getText" tal:condition="text" tal:content="structure text"></tal:text>
+    <tal:text define="text view/getText" tal:condition="text" tal:content="structure text"></tal:text>
     <footer>
     </footer>
   </article>

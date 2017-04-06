@@ -30,3 +30,17 @@ class View(BrowserView):
         if not user:
             return ""
         return user.getProperty('fullname') or creator
+
+    def getText(self):
+        """
+        extract text from current content.
+        AT and DX contents have different methods
+        """
+        try:
+            return self.context.getText()
+        except NotFound:
+            # DX content
+            text = self.context.text
+            if text:
+                return text.output
+        return ""

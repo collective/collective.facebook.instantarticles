@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from plone import api
 from Products.Five.browser import BrowserView
+from lxml import html, etree
 
 
 class View(BrowserView):
@@ -36,11 +37,32 @@ class View(BrowserView):
         extract text from current content.
         AT and DX contents have different methods
         """
+        text = ""
         try:
-            return self.context.getText()
+            text = self.context.getText()
         except AttributeError:
             # DX content
-            text = self.context.text
-            if text:
-                return text.output
-        return ""
+            field = self.context.text
+            if field:
+                text = field.output
+        if not text:
+            return ""
+        return self.fixText(text)
+
+    def fixText(self, text):
+        """
+        Tiny insert images inside the current <p> tag, but Facebook wrap
+        images in a <figure> tag that can't be inside a <p>, so we need to move
+        the image outside it's container.
+        """
+        tree = html.fragment_fromstring(text, create_parent=True)
+        origTree = html.fragment_fromstring(text, create_parent=True)
+        images = tree.xpath('//img')
+        for image in images:
+            paragraph = image.getparent()
+            # remove the image from its parent
+            etree.strip_elements(paragraph, 'img',  with_tail=False)
+            pContainer = paragraph.getparent()
+            pIndex = pContainer.index(paragraph)
+            pContainer.insert(pIndex, image)
+        return etree.tostring(tree)

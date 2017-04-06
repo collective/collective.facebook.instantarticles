@@ -19,6 +19,5 @@ class View(BrowserView):
         return api.portal.get_current_language()
 
     def get_item_html(self, item):
-        response = subrequest(item.getURL())
-        res = '<![CDATA[{}]]>'.format(response.getBody())
-        return res.replace('src="++resource++', 'src="{}/++resource++'.format(self.context.portal_url()))
+        response = subrequest('{}/instant_article'.format(item.getURL()))
+        return '<![CDATA[{}]]>'.format(response.getBody())

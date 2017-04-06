@@ -35,4 +35,13 @@
     layer="collective.facebook.instantarticles.interfaces.IFacebookInstantarticlesLayer"
     template="templates/rss_view.pt"
     />
+
+  <browser:page
+    name="instant_article"
+    class=".instant_article_view.View"
+    permission="zope2.View"
+    for="*"
+    layer="collective.facebook.instantarticles.interfaces.IFacebookInstantarticlesLayer"
+    template="templates/instant_article_view.pt"
+    />
 </configure>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      i18n:domain="collective.facebook.instantarticles"
+      prefix="op: http://media.facebook.com/op#">
+  <head>
+    <meta charset="utf-8">
+    <link rel="canonical" tal:attributes="href context/absolute_url">
+    <title tal:content="context/Title">Instant Articles</title>
+    <meta property="fb:article_style" content="default">
+  </head>
+<body tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+  <article>
+    <header>
+      <!-- The header image shown inside your article -->
+      <figure data-mode="aspect-fit"
+              tal:define="image_tag view/getImageTag"
+              tal:condition="image_tag"
+              tal:content="structure image_tag"></figure>
+
+      <!-- The title and subtitle shown in your article -->
+      <h1 tal:content="context/Title" />
+      <h2 tal:condition="context/Description" tal:content="context/Description" />
+
+      <!-- The author of your article -->
+      <address tal:content="view/getCreator">
+        Instant Articles Team
+      </address>
+
+      <!-- The published and last modified time stamps -->
+      <time class="op-published"
+            tal:attributes="datetime python:view.getFormattedDate(context.effective())"
+            tal:content="python:toLocalizedTime(context.effective())">February 4th 2016, 8:00 AM</time>
+      <time class="op-modified"
+            tal:attributes="datetime python:view.getFormattedDate(context.modified())"
+            tal:content="python:toLocalizedTime(context.modified())">February 4th 2016, 8:00 AM</time>
+    </header>
+    <tal:text define="text context/getText" tal:condition="text" tal:content="structure text"></tal:text>
+    <footer>
+    </footer>
+  </article>
+</body>
+</html>

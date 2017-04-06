@@ -38,7 +38,7 @@ class View(BrowserView):
         """
         try:
             return self.context.getText()
-        except NotFound:
+        except AttributeError:
             # DX content
             text = self.context.text
             if text:

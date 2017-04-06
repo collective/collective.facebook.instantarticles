@@ -67,5 +67,4 @@ class View(BrowserView):
             pContainer = paragraph.getparent()
             pIndex = pContainer.index(paragraph)
             pContainer.insert(pIndex, image)
-        import pdb;pdb.set_trace()
         return etree.tostring(tree, encoding='utf-8', method="html")

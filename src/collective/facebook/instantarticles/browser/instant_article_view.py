@@ -57,7 +57,7 @@ class View(BrowserView):
         the image outside it's container.
         """
         if not isinstance(text, unicode):
-            text = text.decode("utf-8")
+            text = text.decode('utf-8')
         tree = html.fragment_fromstring(text, create_parent=True)
         images = tree.xpath('//img')
         for image in images:
@@ -67,4 +67,4 @@ class View(BrowserView):
             pContainer = paragraph.getparent()
             pIndex = pContainer.index(paragraph)
             pContainer.insert(pIndex, image)
-        return etree.tostring(tree, encoding='utf-8', method="html")
+        return etree.tostring(tree, encoding='utf-8', method='html')

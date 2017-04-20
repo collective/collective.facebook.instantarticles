@@ -17,17 +17,15 @@ Facebook pages with mobile devices.
 There are two ways to populate instant articles: with javascript api or with an
 RSS feed. This product handle the second option.
 
-For more references, go to `official page`__.
-
-.. __ https://instantarticles.fb.com/
+For more references, go to `official page <https://instantarticles.fb.com>`_.
 
 Features
 --------
 
 - Controlpanel to setup a list of FB pages ids
 - Viewlet that expose a meta-tag with the list of ids
-- `fb.rss` collection view that formats collection results to be parsed by Facebook
-- `instant_article` view that format single content infos with a set of standards needed by Facebook.
+- *fb.rss* collection view that formats collection results to be parsed by Facebook
+- *instant_article* view that format single content infos with a set of standards needed by Facebook.
 
 
 Translations
@@ -68,13 +66,10 @@ instant_article view
 The RSS view needs to expose all relevant informations of every single item.
 
 Instant Articles provides several ways to format texts, images and videos
-(see the docs__), so we register a generic view that covers a simple use-case
+(see the `docs <https://developers.facebook.com/docs/instant-articles>`_), so we register a generic view that covers a simple use-case
 (documents and news with images for example), but if you need a specific format
 for your custom content-type, you only need to register an 'instant_article' view
 for it.
-
-
-__ https://developers.facebook.com/docs/instant-articles
 
 Contribute
 ----------

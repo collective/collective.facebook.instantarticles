@@ -10,7 +10,7 @@ from plone.testing import z2
 import collective.facebook.instantarticles
 
 
-class CollectiveFacebookInstantarticlesLayer(PloneSandboxLayer):
+class FacebookInstantarticlesLayer(PloneSandboxLayer):
 
     defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE,)
 
@@ -24,18 +24,18 @@ class CollectiveFacebookInstantarticlesLayer(PloneSandboxLayer):
         applyProfile(portal, 'collective.facebook.instantarticles:default')
 
 
-COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE = CollectiveFacebookInstantarticlesLayer()
+COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE = FacebookInstantarticlesLayer()
 
 
 COLLECTIVE_FACEBOOK_INSTANTARTICLES_INTEGRATION_TESTING = IntegrationTesting(
     bases=(COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE,),
-    name='CollectiveFacebookInstantarticlesLayer:IntegrationTesting'
+    name='FacebookInstantarticlesLayer:IntegrationTesting'
 )
 
 
 COLLECTIVE_FACEBOOK_INSTANTARTICLES_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE,),
-    name='CollectiveFacebookInstantarticlesLayer:FunctionalTesting'
+    name='FacebookInstantarticlesLayer:FunctionalTesting'
 )
 
 
@@ -45,5 +45,5 @@ COLLECTIVE_FACEBOOK_INSTANTARTICLES_ACCEPTANCE_TESTING = FunctionalTesting(
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
         z2.ZSERVER_FIXTURE
     ),
-    name='CollectiveFacebookInstantarticlesLayer:AcceptanceTesting'
+    name='FacebookInstantarticlesLayer:AcceptanceTesting'
 )

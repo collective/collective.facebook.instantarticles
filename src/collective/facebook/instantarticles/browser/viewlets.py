@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from plone.app.layout.viewlets.common import ViewletBase
+from collective.facebook.instantarticles.interfaces import IInstantArticlesSettings # NOQA
 from plone import api
-from collective.facebook.instantarticles.interfaces import IInstantArticlesSettings
+from plone.app.layout.viewlets.common import ViewletBase
 
 
 class FacebookInstantArticlesViewlet(ViewletBase):

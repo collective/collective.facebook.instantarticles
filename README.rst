@@ -6,25 +6,28 @@
 collective.facebook.instantarticles
 ==============================================================================
 
-Tell me what your product does
+.. image:: https://travis-ci.org/collective/collective.facebook.instantarticles.svg?branch=master
+    :target: https://travis-ci.org/collective/collective.facebook.instantarticles
+
+Plone integration for Facebook Instant Articles.
+
+If you don't know them, instant articles are a new way to publish/read contents in
+Facebook pages with mobile devices.
+
+There are two ways to populate instant articles: with javascript api or with an
+RSS feed. This product handle the second option.
+
+For more references, go to `official page`__.
+
+.. __ https://instantarticles.fb.com/
 
 Features
 --------
 
-- Can be bullet points
-
-
-Examples
---------
-
-This add-on can be seen in action at the following sites:
-- Is there a page on the internet where everybody can see the features?
-
-
-Documentation
--------------
-
-Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
+- Controlpanel to setup a list of FB pages ids
+- Viewlet that expose a meta-tag with the list of ids
+- `fb.rss` collection view that formats collection results to be parsed by Facebook
+- `instant_article` view that format single content infos with a set of standards needed by Facebook.
 
 
 Translations
@@ -32,7 +35,8 @@ Translations
 
 This product has been translated into
 
-- Klingon (thanks, K'Plai)
+- English
+- Italian
 
 
 Installation
@@ -51,22 +55,47 @@ Install collective.facebook.instantarticles by adding it to your buildout::
 and then running ``bin/buildout``
 
 
+RSS view
+--------
+
+In Facebook page's Instant Articles settings, you need to insert an address where
+it can retrieve an RSS feed to populate the list of pending articles.
+This feed needs some custom tags and infos, so we created a specific view for this purpose.
+
+instant_article view
+--------------------
+
+The RSS view needs to expose all relevant informations of every single item.
+
+Instant Articles provides several ways to format texts, images and videos
+(see the docs__), so we register a generic view that covers a simple use-case
+(documents and news with images for example), but if you need a specific format
+for your custom content-type, you only need to register an 'instant_article' view
+for it.
+
+
+__ https://developers.facebook.com/docs/instant-articles
+
 Contribute
 ----------
 
 - Issue Tracker: https://github.com/collective/collective.facebook.instantarticles/issues
 - Source Code: https://github.com/collective/collective.facebook.instantarticles
-- Documentation: https://docs.plone.org/foo/bar
-
-
-Support
--------
-
-If you are having issues, please let us know.
-We have a mailing list located at: project@example.com
 
 
 License
 -------
 
 The project is licensed under the GPLv2.
+
+Credits
+=======
+
+Developed with the support of:
+
+* `Regione Emilia Romagna`__
+
+Regione Emilia Romagna supports the `PloneGov initiative`__.
+
+__ http://www.regione.emilia-romagna.it/
+__ http://www.plonegov.it/

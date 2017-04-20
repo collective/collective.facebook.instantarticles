@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+from lxml import etree
+from lxml import html
 from plone import api
 from Products.Five.browser import BrowserView
-from lxml import html, etree
 
 
 class View(BrowserView):
@@ -16,10 +17,10 @@ class View(BrowserView):
             request=self.request,
         )
         if not scales:
-            return ""
-        scale = scales.scale('image', scale="large")
+            return ''
+        scale = scales.scale('image', scale='large')
         if not scale:
-            return ""
+            return ''
         return scale.tag()
 
     def getFormattedDate(self, date):
@@ -29,15 +30,15 @@ class View(BrowserView):
         creator = self.context.Creator()
         user = api.user.get(username=creator)
         if not user:
-            return ""
+            return ''
         return user.getProperty('fullname') or creator
 
     def getText(self):
-        """
+        """"
         extract text from current content.
         AT and DX contents have different methods
         """
-        text = ""
+        text = ''
         try:
             text = self.context.getText()
         except AttributeError:
@@ -46,7 +47,7 @@ class View(BrowserView):
             if field:
                 text = field.output
         if not text:
-            return ""
+            return ''
         return self.fixText(text)
 
     def fixText(self, text):
@@ -56,7 +57,6 @@ class View(BrowserView):
         the image outside it's container.
         """
         tree = html.fragment_fromstring(text, create_parent=True)
-        origTree = html.fragment_fromstring(text, create_parent=True)
         images = tree.xpath('//img')
         for image in images:
             paragraph = image.getparent()

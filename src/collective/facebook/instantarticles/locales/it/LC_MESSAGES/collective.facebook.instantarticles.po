@@ -20,15 +20,14 @@ msgstr ""
 #: ../browser/controlpanel.py:12
 #: ../profiles/default/controlpanel.xml
 msgid "Facebook instant articles settings"
-msgstr ""
+msgstr "Impostazioni Facebook instant articles"
 
 #. Default: "Insert a list of facebook page codes."
 #: ../interfaces.py:20
 msgid "instantarticles_fbpagecodes_help"
-msgstr ""
+msgstr "Inserisci una lista di codici delle pagine Facebook"
 
 #. Default: "Facebook page codes"
 #: ../interfaces.py:17
 msgid "instantarticles_fbpagecodes_label"
-msgstr ""
-
+msgstr "Codici pagine Facebook"

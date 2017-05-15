@@ -60,10 +60,21 @@ In Facebook page's Instant Articles settings, you need to insert an address wher
 it can retrieve an RSS feed to populate the list of pending articles.
 This feed needs some custom tags and infos, so we created a specific view for this purpose.
 
+There is a new view registered for Collections: 'fb.rss' that format informations
+in the correct way, so in Instant Articles config you need to insert an url like this:
+
+``http://your_site_url/collection-for-facebook/fb.rss``
+
 instant_article view
 --------------------
 
-The RSS view needs to expose all relevant informations of every single item.
+The RSS view needs to expose all relevant informations for each result item.
+
+This is done with a view called ``instant_article`` that can be called over an object,
+and returns a formatted html with some generic informations.
+If you want to expose different informations for a specific content-type, you only need
+to override this view for the desired content-type.
+
 
 Instant Articles provides several ways to format texts, images and videos
 (see the `docs <https://developers.facebook.com/docs/instant-articles>`_), so we register a generic view that covers a simple use-case

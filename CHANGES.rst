@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.1 (unreleased)
+1.0.1 (2018-10-19)
 ------------------
 
 - Fix text getter for item detail.

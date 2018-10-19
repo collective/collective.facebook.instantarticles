@@ -6,9 +6,9 @@ from Products.Five.browser import BrowserView
 
 
 class View(BrowserView):
-    '''
+    """
     View that formats item informations for instant articles
-    '''
+    """
 
     def getImageTag(self):
         scales = api.content.get_view(

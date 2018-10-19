@@ -6,9 +6,9 @@ from Products.Five.browser import BrowserView
 
 
 class View(BrowserView):
-    '''
+    """
     RSS view for Facebook instant articles
-    '''
+    """
 
     def __call__(self):
         self.request.response.setHeader('Content-Type',

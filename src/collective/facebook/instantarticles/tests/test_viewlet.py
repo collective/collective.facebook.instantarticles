@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """Viewlet tests for this package."""
-from collective.facebook.instantarticles.browser.viewlets import FacebookInstantArticlesViewlet # NOQA
-from collective.facebook.instantarticles.interfaces import IInstantArticlesSettings # NOQA
+from collective.facebook.instantarticles.browser.viewlets import FacebookInstantArticlesViewlet  # NOQA
+from collective.facebook.instantarticles.interfaces import IInstantArticlesSettings  # NOQA
 from collective.facebook.instantarticles.testing import COLLECTIVE_FACEBOOK_INSTANTARTICLES_INTEGRATION_TESTING  # NOQA
 from plone import api
+
 import unittest
 
 

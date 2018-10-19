@@ -43,7 +43,7 @@ class View(BrowserView):
             text = self.context.getText()
         except AttributeError:
             # DX content
-            field = self.context.text
+            field = getattr(self.context, 'text', None)
             if field:
                 text = field.output
         if not text:

@@ -1,24 +1,27 @@
 language: python
+python: 2.7
 sudo: false
 cache:
+  pip: true
   directories:
-  - eggs
-  - downloads
-python:
-  - 2.7
-matrix:
-  fast_finish: true
+    - eggs
+env:
+  - PLONE_VERSION=4.3.x
+  - PLONE_VERSION=5.0.x
+  - PLONE_VERSION=5.1.x
 install:
-  - python bootstrap-buildout.py
-  - bin/buildout -N buildout:download-cache=downloads annotate
-  - bin/buildout -N buildout:download-cache=downloads
+  - virtualenv -p `which python` .
+  - bin/pip install -r requirements.txt
+  - sed -ie "s#test-5.1.x#test-$PLONE_VERSION#" buildout.cfg
+  - bin/buildout -N -t 5
 before_script:
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
-- firefox -v
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
 script:
   - bin/code-analysis
   - bin/test
-notifications:
-  email:
-    - andrea.cecchi@redturtle.it
+after_success:
+  - bin/test-coverage
+  - bin/createcoverage
+  - pip install coverage==3.7.1 coveralls
+  - coveralls

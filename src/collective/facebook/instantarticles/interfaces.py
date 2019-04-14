@@ -15,12 +15,13 @@ class IInstantArticlesSettings(Interface):
 
     fb_page_codes = schema.List(
         title=_(
-            'instantarticles_fbpagecodes_label',
-            default=u'Facebook page codes'),
+            'instantarticles_fbpagecodes_label', default=u'Facebook page codes'
+        ),
         description=_(
             'instantarticles_fbpagecodes_help',
-            default=u'Insert a list of facebook page codes.'),
+            default=u'Insert a list of facebook page codes.',
+        ),
         value_type=schema.TextLine(),
         required=True,
-        default=[]
+        default=[],
     )

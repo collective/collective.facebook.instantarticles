@@ -2,12 +2,13 @@ Changelog
 =========
 
 
-1.0.2 (unreleased)
+1.1.0 (unreleased)
 ------------------
 
 - Add classifiers for Plone 5.
   [agitator]
-
+- Add python3 support.
+  [cekk]
 
 1.0.1 (2018-10-19)
 ------------------

@@ -10,7 +10,7 @@ from plone.testing import z2
 import collective.facebook.instantarticles
 
 
-class FacebookInstantarticlesLayer(PloneSandboxLayer):
+class CollectiveFacebookInstantarticlesLayer(PloneSandboxLayer):
 
     defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE,)
 
@@ -18,24 +18,29 @@ class FacebookInstantarticlesLayer(PloneSandboxLayer):
         # Load any other ZCML that is required for your tests.
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
+        import plone.restapi
+
+        self.loadZCML(package=plone.restapi)
         self.loadZCML(package=collective.facebook.instantarticles)
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'collective.facebook.instantarticles:default')
 
 
-COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE = FacebookInstantarticlesLayer()
+COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE = (
+    CollectiveFacebookInstantarticlesLayer()
+)
 
 
 COLLECTIVE_FACEBOOK_INSTANTARTICLES_INTEGRATION_TESTING = IntegrationTesting(
     bases=(COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE,),
-    name='FacebookInstantarticlesLayer:IntegrationTesting'
+    name='CollectiveFacebookInstantarticlesLayer:IntegrationTesting',
 )
 
 
 COLLECTIVE_FACEBOOK_INSTANTARTICLES_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE,),
-    name='FacebookInstantarticlesLayer:FunctionalTesting'
+    name='CollectiveFacebookInstantarticlesLayer:FunctionalTesting',
 )
 
 
@@ -43,7 +48,7 @@ COLLECTIVE_FACEBOOK_INSTANTARTICLES_ACCEPTANCE_TESTING = FunctionalTesting(
     bases=(
         COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE,
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
-        z2.ZSERVER_FIXTURE
+        z2.ZSERVER_FIXTURE,
     ),
-    name='FacebookInstantarticlesLayer:AcceptanceTesting'
+    name='CollectiveFacebookInstantarticlesLayer:AcceptanceTesting',
 )

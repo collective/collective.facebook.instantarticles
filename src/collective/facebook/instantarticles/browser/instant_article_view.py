@@ -12,9 +12,7 @@ class View(BrowserView):
 
     def getImageTag(self):
         scales = api.content.get_view(
-            name='images',
-            context=self.context,
-            request=self.request,
+            name='images', context=self.context, request=self.request
         )
         if not scales:
             return ''
@@ -62,9 +60,11 @@ class View(BrowserView):
         images = tree.xpath('//img')
         for image in images:
             paragraph = image.getparent()
-            # remove the image from its parent
-            etree.strip_elements(paragraph, 'img',  with_tail=False)
-            pContainer = paragraph.getparent()
-            pIndex = pContainer.index(paragraph)
-            pContainer.insert(pIndex, image)
+            if paragraph is not None:
+                pContainer = paragraph.getparent()
+                if pContainer is not None:
+                    # remove the image from its parent
+                    etree.strip_elements(paragraph, 'img', with_tail=False)
+                    pIndex = pContainer.index(paragraph)
+                    pContainer.insert(pIndex, image)
         return etree.tostring(tree, encoding='utf-8', method='html')

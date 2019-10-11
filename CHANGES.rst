@@ -7,7 +7,8 @@ Changelog
 
 - Add classifiers for Plone 5.
   [agitator]
-
+- Handle case when image has no wrapper tag.
+  [cekk]
 
 1.0.1 (2018-10-19)
 ------------------

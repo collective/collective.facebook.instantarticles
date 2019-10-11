@@ -29,13 +29,13 @@ COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE = FacebookInstantarticlesLayer()
 
 COLLECTIVE_FACEBOOK_INSTANTARTICLES_INTEGRATION_TESTING = IntegrationTesting(
     bases=(COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE,),
-    name='FacebookInstantarticlesLayer:IntegrationTesting'
+    name='FacebookInstantarticlesLayer:IntegrationTesting',
 )
 
 
 COLLECTIVE_FACEBOOK_INSTANTARTICLES_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE,),
-    name='FacebookInstantarticlesLayer:FunctionalTesting'
+    name='FacebookInstantarticlesLayer:FunctionalTesting',
 )
 
 
@@ -43,7 +43,7 @@ COLLECTIVE_FACEBOOK_INSTANTARTICLES_ACCEPTANCE_TESTING = FunctionalTesting(
     bases=(
         COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE,
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
-        z2.ZSERVER_FIXTURE
+        z2.ZSERVER_FIXTURE,
     ),
-    name='FacebookInstantarticlesLayer:AcceptanceTesting'
+    name='FacebookInstantarticlesLayer:AcceptanceTesting',
 )

@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """Viewlet tests for this package."""
-from collective.facebook.instantarticles.browser.viewlets import (
-    FacebookInstantArticlesViewlet,
-)  # NOQA
-from collective.facebook.instantarticles.interfaces import (
-    IInstantArticlesSettings,
-)  # NOQA
-from collective.facebook.instantarticles.testing import (
-    COLLECTIVE_FACEBOOK_INSTANTARTICLES_INTEGRATION_TESTING,
-)  # NOQA
+from collective.facebook.instantarticles.browser.viewlets import (  # noqa
+    FacebookInstantArticlesViewlet,  # noqa
+)  # noqa
+from collective.facebook.instantarticles.interfaces import (  # noqa
+    IInstantArticlesSettings,  # noqa
+)  # noqa
+from collective.facebook.instantarticles.testing import (  # noqa
+    COLLECTIVE_FACEBOOK_INSTANTARTICLES_INTEGRATION_TESTING,  # noqa
+)  # noqa
 from plone import api
 
 import unittest
@@ -39,4 +39,3 @@ class TestInstantArticleView(unittest.TestCase):
             view.fixText(img_inside_p),
             '<div><img src="something"><p> Example.</p></div>',
         )
-

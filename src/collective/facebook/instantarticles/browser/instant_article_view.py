@@ -3,6 +3,7 @@ from lxml import etree
 from lxml import html
 from plone import api
 from Products.Five.browser import BrowserView
+import six
 
 
 class View(BrowserView):
@@ -54,7 +55,7 @@ class View(BrowserView):
         images in a <figure> tag that can't be inside a <p>, so we need to move
         the image outside it's container.
         """
-        if not isinstance(text, unicode):
+        if not isinstance(text, six.text_type):
             text = text.decode('utf-8')
         tree = html.fragment_fromstring(text, create_parent=True)
         images = tree.xpath('//img')

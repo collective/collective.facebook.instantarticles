@@ -14,9 +14,6 @@ install:
   - bin/pip install -r requirements.txt
   - sed -ie "s#test-5.1.x#test-$PLONE_VERSION#" buildout.cfg
   - bin/buildout -N -t 5
-before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
 script:
   - bin/code-analysis
   - bin/test

@@ -81,10 +81,7 @@ if options.version:
 ######################################################################
 # load/install setuptools
 
-try:
-    from urllib.request import urlopen
-except ImportError:
-    from six.moves.urllib.request import urlopen
+from urllib.request import urlopen
 
 ez = {}
 if os.path.exists('ez_setup.py'):

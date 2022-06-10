@@ -21,3 +21,10 @@ class View(BrowserView):
     def get_item_html(self, item):
         response = subrequest('{0}/instant_article'.format(item.getURL()))
         return '<![CDATA[{0}]]>'.format(response.getBody())
+
+    def results(self):
+        """ """
+        if hasattr(self.context, 'results'):
+            return self.context.results()
+        else:
+            return []

@@ -38,7 +38,7 @@ class TestSetup(unittest.TestCase):
         )
 
     def test_browserlayer(self):
-        """Test that IFacebookInstantarticlesLayer is registered."""
+        """Test that ICollectiveFacebookInstantarticlesLayer is registered."""
         from collective.facebook.instantarticles.interfaces import (
             IFacebookInstantarticlesLayer,
         )

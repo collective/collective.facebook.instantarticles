@@ -6,19 +6,19 @@ cache:
     - eggs
     - downloads
 python:
-  - "2.7"
+  - "3.8"
 matrix:
   include:
-    - python: "2.7"
-      env: PLONE_VERSION=51
-    - python: "2.7"
-      env: PLONE_VERSION=52
-    - python: "3.7"
+    - python: "3.8"
       env: PLONE_VERSION=52
       dist: xenial
   sudo: true
   fast_finish: true
 before_install:
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
+  - mkdir geckodriver
+  - tar -xzf geckodriver-v0.24.0-linux64.tar.gz -C geckodriver
+  - export PATH=$PATH:$PWD/geckodriver
   - virtualenv -p `which python` .
   - mkdir -p $HOME/buildout-cache/{eggs,downloads}
   - mkdir $HOME/.buildout
@@ -42,13 +42,11 @@ before_script:
 
 script:
   # Run code-analysis, except on Python 3.6, which mysteriously fails to find zc.buildout.
-  # - python --version 2> /dev/stdout | grep 3.6 || bin/code-analysis
-  - bin/test
-
-after_script:
-  - bin/createcoverage --output-dir=parts/test/coverage
+  - python --version 2> /dev/stdout | grep 3.6 || bin/code-analysis
+  - bin/test --all
 
 after_success:
+  - bin/createcoverage --output-dir=parts/test/coverage
   - bin/pip install coverage
   - bin/python -m coverage.pickle2json
   - bin/pip install -q coveralls

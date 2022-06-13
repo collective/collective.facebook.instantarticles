@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
 """Viewlet tests for this package."""
-from collective.facebook.instantarticles.browser.viewlets import FacebookInstantArticlesViewlet  # NOQA
-from collective.facebook.instantarticles.interfaces import IInstantArticlesSettings  # NOQA
-from collective.facebook.instantarticles.testing import COLLECTIVE_FACEBOOK_INSTANTARTICLES_INTEGRATION_TESTING  # NOQA
+from collective.facebook.instantarticles.browser.viewlets import (
+    FacebookInstantArticlesViewlet,
+)
+from collective.facebook.instantarticles.interfaces import (
+    IInstantArticlesSettings,
+)
+from collective.facebook.instantarticles.testing import (
+    COLLECTIVE_FACEBOOK_INSTANTARTICLES_INTEGRATION_TESTING,
+)
+
 from plone import api
 
 import unittest
@@ -23,10 +30,8 @@ class TestViewlet(unittest.TestCase):
 
     def test_viewlet_notrendered_without_settings(self):
         viewlet = FacebookInstantArticlesViewlet(
-            self.portal,
-            self.request,
-            None,
-            None)
+            self.portal, self.request, None, None
+        )
         viewlet.update()
         self.assertEqual(viewlet.code, '')
         self.assertEqual(viewlet.extractPageCodes(), '')
@@ -36,15 +41,11 @@ class TestViewlet(unittest.TestCase):
         code = u'foo'
         meta = '<meta property="fb:pages" content="{0}" />'.format(code)
         api.portal.set_registry_record(
-            'fb_page_codes',
-            [code, ],
-            interface=IInstantArticlesSettings
+            'fb_page_codes', [code], interface=IInstantArticlesSettings
         )
         viewlet = FacebookInstantArticlesViewlet(
-            self.portal,
-            self.request,
-            None,
-            None)
+            self.portal, self.request, None, None
+        )
         viewlet.update()
         self.assertEqual(viewlet.code, code)
         self.assertEqual(viewlet.extractPageCodes(), code)
@@ -56,15 +57,11 @@ class TestViewlet(unittest.TestCase):
         str_codes = ', '.join(codes)
         meta = '<meta property="fb:pages" content="{0}" />'.format(str_codes)
         api.portal.set_registry_record(
-            'fb_page_codes',
-            codes,
-            interface=IInstantArticlesSettings
+            'fb_page_codes', codes, interface=IInstantArticlesSettings
         )
         viewlet = FacebookInstantArticlesViewlet(
-            self.portal,
-            self.request,
-            None,
-            None)
+            self.portal, self.request, None, None
+        )
         viewlet.update()
         self.assertEqual(viewlet.code, str_codes)
         self.assertEqual(viewlet.extractPageCodes(), str_codes)

@@ -3,7 +3,7 @@
      xmlns:tal="http://xml.zope.org/namespaces/tal"
      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
      lang="en">
-  <channel tal:define="results context/results">
+  <channel tal:define="results view/results">
     <title tal:content="context/Title">${context/Title}</title>
     <link rel="alternate"
           type="application/rss+xml"

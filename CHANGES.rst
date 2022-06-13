@@ -2,11 +2,12 @@ Changelog
 =========
 
 
-1.0.2 (unreleased)
+1.1.0 (unreleased)
 ------------------
 
 - Add classifiers for Plone 5.
   [agitator]
+- Add python3 support.
 - Handle case when image has no wrapper tag.
   [cekk]
 

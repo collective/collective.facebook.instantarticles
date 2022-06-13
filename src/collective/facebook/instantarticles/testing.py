@@ -1,16 +1,14 @@
 # -*- coding: utf-8 -*-
 from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE
-from plone.app.robotframework.testing import REMOTE_LIBRARY_BUNDLE_FIXTURE
 from plone.app.testing import applyProfile
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PloneSandboxLayer
-from plone.testing import z2
 
 import collective.facebook.instantarticles
 
 
-class FacebookInstantarticlesLayer(PloneSandboxLayer):
+class CollectiveFacebookInstantarticlesLayer(PloneSandboxLayer):
 
     defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE,)
 
@@ -24,26 +22,17 @@ class FacebookInstantarticlesLayer(PloneSandboxLayer):
         applyProfile(portal, 'collective.facebook.instantarticles:default')
 
 
-COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE = FacebookInstantarticlesLayer()
+COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE = (
+    CollectiveFacebookInstantarticlesLayer()
+)
 
 
 COLLECTIVE_FACEBOOK_INSTANTARTICLES_INTEGRATION_TESTING = IntegrationTesting(
     bases=(COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE,),
-    name='FacebookInstantarticlesLayer:IntegrationTesting',
+    name='CollectiveFacebookInstantarticlesLayer:IntegrationTesting',
 )
 
 
 COLLECTIVE_FACEBOOK_INSTANTARTICLES_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE,),
-    name='FacebookInstantarticlesLayer:FunctionalTesting',
-)
-
-
-COLLECTIVE_FACEBOOK_INSTANTARTICLES_ACCEPTANCE_TESTING = FunctionalTesting(
-    bases=(
-        COLLECTIVE_FACEBOOK_INSTANTARTICLES_FIXTURE,
-        REMOTE_LIBRARY_BUNDLE_FIXTURE,
-        z2.ZSERVER_FIXTURE,
-    ),
-    name='FacebookInstantarticlesLayer:AcceptanceTesting',
-)
+    name='CollectiveFacebookInstantarticlesLayer:FunctionalTesting',

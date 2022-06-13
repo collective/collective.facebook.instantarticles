@@ -73,7 +73,7 @@ class TestUninstall(unittest.TestCase):
         )
 
     def test_browserlayer_removed(self):
-        """Test that ICollectiveFacebookInstantarticlesLayer is removed."""
+        """Test that IFacebookInstantarticlesLayer is removed."""
         from collective.facebook.instantarticles.interfaces import (
             IFacebookInstantarticlesLayer,
         )
